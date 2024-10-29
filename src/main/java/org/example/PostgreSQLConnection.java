@@ -32,8 +32,13 @@ public class PostgreSQLConnection {
             }
         }
     }
-
-    public static void main(String[] args) {
-        connect();
-    }
+    public  void selectEmloyeeByDepartment(String department) throws SQLException {
+        String query = "SELECT * FROM employees WHERE department = ?";
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement preparedStatement = connection.prepareStatement(query){
+                 preparedStatement.setString(1, department);
+                 ResultSet rs = preparedStatement.executeQuery();
+                 while (rs.next()) {}
+        }
+        }
 }

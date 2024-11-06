@@ -7,5 +7,6 @@ public class Main {
         PostgreSQLConnection postgreSQLConnection = new PostgreSQLConnection();
         postgreSQLConnection.connect();
         postgreSQLConnection.findEmployeeByName("Jane");
+        postgreSQLConnection.selectEmloyeeByDepartment("HR");
     }
 }

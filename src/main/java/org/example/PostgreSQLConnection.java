@@ -35,10 +35,12 @@ public class PostgreSQLConnection {
     public  void selectEmloyeeByDepartment(String department) throws SQLException {
         String query = "SELECT * FROM employees WHERE department = ?";
         try (Connection connection = DriverManager.getConnection(url, username, password);
-             PreparedStatement preparedStatement = connection.prepareStatement(query){
+             PreparedStatement preparedStatement = connection.prepareStatement(query)){
                  preparedStatement.setString(1, department);
                  ResultSet rs = preparedStatement.executeQuery();
-                 while (rs.next()) {}
+                 while (rs.next()) {
+            System.out.println(rs.getString("first_name") + " " + rs.getString("last_name")+" "+rs.getBigDecimal("salary"));
+                 }
         }
         }
 }
